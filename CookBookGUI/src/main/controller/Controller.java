@@ -13,6 +13,16 @@ import main.model.Recipe;
  */
 public class Controller {
 	
+	private Recipe selected = null;
+	
+	public Recipe getSelected() {
+		return selected;
+	}
+
+	public void setSelected(Recipe selected) {
+		this.selected = selected;
+	}
+
 	/**
 	 * Database Access Object Singleton creation.
 	 */
@@ -54,14 +64,8 @@ public class Controller {
 		cookBookDao.SaveRecipe(r);
 	}
 	
-	/**
-	 * Calls Dao to save new Category object into DB.
-	 * @param categoryName the name for the new category.
-	 * @return saved category object.
-	 */
-	public Category SaveCategory(String categoryName) {
-		Category C = cookBookDao.saveCategory(categoryName);
-		return C;
+	public void SaveCategory(Category toSave) {
+	  cookBookDao.saveCategory(toSave);
 	}
 	
 	/**
@@ -87,6 +91,10 @@ public class Controller {
 	 */
 	public Category getCategoryByName (String name) {
 		return cookBookDao.findCategoryByName(name);
+	}
+	
+	public List<Recipe> getRecipesByCategory(Category C) {
+		return cookBookDao.getRecipesByCategory(C);
 	}
 	
 }

@@ -7,6 +7,8 @@ import java.util.Scanner;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 /**
  * The Database Access Object for this project. Handles use of DB. Passes data to Controller class methods.
  * @author tmati
@@ -30,20 +32,13 @@ public class Dao {
 	 */
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("CookBookPU");
 	private Scanner keyboard;
-
-	/**
-	 * Saves a new category object into DB Category Table.
-	 * @param categoryName Name for category to save.
-	 * @return saved Category object.
-	 */
-	public Category saveCategory(String categoryName) {
+	
+	public void saveCategory(Category toSave) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Category toSave = new Category(categoryName);
 		em.persist(toSave);
 		em.getTransaction().commit();
 		em.close();
-		return toSave;
 	}
 	
 	/**
@@ -132,6 +127,13 @@ public class Dao {
 		em.getTransaction().commit();
 		em.close();
 		return allCategories;
+	}
+	
+	public List<Recipe> getRecipesByCategory(Category C) {
+		EntityManager em = emf.createEntityManager();
+		Query query = em.createQuery("Select r from Recipe r where r.category = :category");
+		query.setParameter("category", C);
+		return query.getResultList();
 	}
 	
 	/**

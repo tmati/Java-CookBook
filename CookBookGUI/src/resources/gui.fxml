@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.TextFlow?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.GuiController">
+<Pane fx:id="bgPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: goldenrod;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.GuiController">
    <children>
       <ScrollPane fx:id="descriptionScroll" layoutX="48.0" layoutY="358.0" style="-fx-background-color: transparent;">
          <content>
@@ -18,7 +18,7 @@
       </ScrollPane>
       <ScrollPane fx:id="ingredientsScroll" layoutX="48.0" layoutY="131.0" prefHeight="214.0" prefWidth="676.0" style="-fx-background-color: transparent;">
          <content>
-            <TextFlow fx:id="ingredientsList" prefHeight="209.0" prefWidth="658.0" textAlignment="JUSTIFY" />
+            <TextFlow fx:id="ingredientsList" focusTraversable="true" prefHeight="210.0" prefWidth="667.0" />
          </content>
       </ScrollPane>
       <ScrollPane fx:id="recipeListScroll" layoutX="768.0" layoutY="129.0" prefHeight="543.0" prefWidth="456.0" style="-fx-background-color: transparent;">
@@ -28,10 +28,10 @@
       </ScrollPane>
       <Label fx:id="nameLabel" layoutX="48.0" layoutY="29.0" prefHeight="33.0" prefWidth="276.0" text="Label" textOverrun="CLIP" />
       <Label fx:id="amountLabel" layoutX="48.0" layoutY="76.0" prefHeight="33.0" prefWidth="159.0" text="Label" />
-      <Label fx:id="categoryLabel" layoutX="494.0" layoutY="29.0" prefHeight="33.0" prefWidth="134.0" text="Label" />
-      <Button fx:id="createButton" layoutX="1172.0" layoutY="80.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" />
-      <ChoiceBox fx:id="categoryChoice" layoutX="996.0" layoutY="80.0" prefWidth="150.0" value="Sort by category" />
+      <Label fx:id="titleLabel" alignment="CENTER" layoutX="494.0" layoutY="29.0" prefHeight="33.0" prefWidth="134.0" text="JAVA COOKBOOK" />
+      <Button fx:id="createButton" layoutX="1169.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#newRecipePopup" prefHeight="25.0" prefWidth="53.0" />
+      <ChoiceBox fx:id="categoryChoice" layoutX="996.0" layoutY="80.0" onAction="#sortByCategory" prefWidth="150.0" value="Sort by category" />
       <TextField fx:id="searchField" layoutX="768.0" layoutY="80.0" prefHeight="25.0" prefWidth="205.0" />
-      <Label fx:id="categoryLabel1" alignment="CENTER" layoutX="1004.0" layoutY="46.0" prefHeight="33.0" prefWidth="134.0" text="Category" />
+      <Label fx:id="categoryLabel" alignment="CENTER" layoutX="1004.0" layoutY="46.0" prefHeight="33.0" prefWidth="134.0" text="Category" />
    </children>
 </Pane>

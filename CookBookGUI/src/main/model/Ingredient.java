@@ -52,6 +52,9 @@ public class Ingredient implements Serializable {
 		this.measure = null;
 	}
 	
+	public Ingredient() {
+	}
+
 	/**
 	 * String information
 	 */
@@ -69,6 +72,18 @@ public class Ingredient implements Serializable {
 
 	public String getMeasure() {
 		return measure;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public void setMeasure(String measure) {
+		this.measure = measure;
 	}
 	
 }

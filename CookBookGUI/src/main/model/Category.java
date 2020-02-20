@@ -32,4 +32,8 @@ public class Category {
 	public void setCategoryDescription(String categoryDescription) {
 		CategoryDescription = categoryDescription;
 	}
+	
+	public int getCategoryID() {
+		return CategoryID;
+	}
 }

@@ -1,5 +1,6 @@
 package main.model;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +66,7 @@ public class Recipe {
 		this.description = description;
 		this.category = category;
 		this.ingredients = ingredients;
-	}
+	}	
 	
 	/**
 	 * String representation of recipe with its ingredients.

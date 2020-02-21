@@ -93,10 +93,12 @@ public class GuiController implements Initializable {
 	
 	//Get controller instance.
 	Controller ControllerInstance = Controller.getInstance();
+	
 	/**
 	 * Decimal format to display all numbers until zero.
 	 */
 	DecimalFormat format = new DecimalFormat("0.#");
+	
 	/**
 	 * Recipe to be shown on screen.
 	 */
@@ -140,6 +142,7 @@ public class GuiController implements Initializable {
 		//Get all recipes.
 		List <Recipe> Recipes = ControllerInstance.getRecipes();
 		
+		//Populate recipe list with db recipes.
 		generateRecipeList(Recipes);
 	}
 	
@@ -155,6 +158,7 @@ public class GuiController implements Initializable {
 		amountLabel.setText(selected.getAmount());
 		titleLabel.setText(selected.getCategory().getCategoryDescription());
 
+		//Add ingredients to ingredients table.
 		for (Ingredient i : selected.getIngredients()) {
 			Text amount = new Text(format.format(i.getAmount()) + "		");
 			Text measure = new Text(i.getMeasure()+ "		");
@@ -168,6 +172,11 @@ public class GuiController implements Initializable {
 		}
 	}
 
+	/**
+	 * Open up a popup to create a new recipe.
+	 * @param event The MouseEvent of the button pressed.
+	 * @throws IOException file handling exception to throw.
+	 */
 	@FXML
 	public void newRecipePopup(MouseEvent event) throws IOException {
 		if(popup == null || !popup.isShowing()) {
@@ -182,6 +191,10 @@ public class GuiController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Generates a visual representation for each recipe into the recipe list element. The representation includes buttons for editing and deleting corresponding recipe objects.
+	 * @param Recipes The list of recipes used to populate the ListView.
+	 */
 	public void generateRecipeList(List<Recipe> Recipes) {
 		//Create A HBox into the listView for each recipe with corresponding update and delete buttons.
 		for (Recipe r : Recipes) {
@@ -218,6 +231,10 @@ public class GuiController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Sorting functionality for category ChoiceBox use.
+	 * @param event ActionEvent that is fired when ChoiceBox value changes.
+	 */
 	@FXML
 	public void sortByCategory(ActionEvent event) {
 		recipeList.getItems().clear();
@@ -227,6 +244,7 @@ public class GuiController implements Initializable {
 		generateRecipeList(filteredRecipes);
 		categoryChoice.getItems().clear();
 		categoryChoice.getItems().addAll(Controller.getInstance().getCategories());
+		//Set new choiceBox option to reset filter.
 		categoryChoice.getItems().add(0, new Category("All categories"));
 		} else {
 			generateRecipeList(ControllerInstance.getRecipes());

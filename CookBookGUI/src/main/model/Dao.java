@@ -33,44 +33,16 @@ public class Dao {
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("CookBookPU");
 	private Scanner keyboard;
 	
+	/**
+	 * Saving Category object to DB.
+	 * @param toSave the Category object to save.
+	 */
 	public void saveCategory(Category toSave) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(toSave);
 		em.getTransaction().commit();
 		em.close();
-	}
-	
-	/**
-	 * Test method for collecting ingredient array data from console input. Removed after GUI recipe generation working.
-	 * @return The list of given ingredients.
-	 */
-	public ArrayList<Ingredient> collectIngredients() {
-		boolean exit = false;
-		ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-		String ingredientName = "";
-		double amount;
-		String measure;
-		keyboard = new Scanner(System.in);
-
-		while (exit == false) {
-			System.out.println(
-					"\nWrite ingredient name! If you want to specify different parts of the recipe, do not write any measurements.");
-			ingredientName = keyboard.nextLine();
-			System.out.println("\nWrite amount of ingredient!");
-			amount = keyboard.nextDouble();
-			keyboard.nextLine();
-			System.out.println("\nWrite units of measure for ingredient!");
-			measure = keyboard.nextLine();
-			Ingredient toAdd = new Ingredient(ingredientName, amount, measure);
-			ingredients.add(toAdd);
-			System.out.println("Add another ingredient Y/N?");
-			if (keyboard.nextLine().equalsIgnoreCase("n")) {
-				exit = true;
-			}
-		}
-
-		return ingredients;
 	}
 	
 	/**
@@ -129,6 +101,11 @@ public class Dao {
 		return allCategories;
 	}
 	
+	/**
+	 * Get all recipes from DB that belong to a given category.
+	 * @param C The category to look for.
+	 * @return All Recipe objects that belong to the given category.
+	 */
 	public List<Recipe> getRecipesByCategory(Category C) {
 		EntityManager em = emf.createEntityManager();
 		Query query = em.createQuery("Select r from Recipe r where r.category = :category");

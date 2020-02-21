@@ -13,15 +13,11 @@ import main.model.Recipe;
  */
 public class Controller {
 	
+	/**
+	 * Recipe object to pass to menu when editing existing recipe.
+	 */
 	private Recipe selected = null;
 	
-	public Recipe getSelected() {
-		return selected;
-	}
-
-	public void setSelected(Recipe selected) {
-		this.selected = selected;
-	}
 
 	/**
 	 * Database Access Object Singleton creation.
@@ -64,16 +60,12 @@ public class Controller {
 		cookBookDao.SaveRecipe(r);
 	}
 	
+	/**
+	 * Calls Dao to create new category entry to db
+	 * @param toSave
+	 */
 	public void SaveCategory(Category toSave) {
 	  cookBookDao.saveCategory(toSave);
-	}
-	
-	/**
-	 * Calls Dao test method to create Ingredients array with console input. Removed later upon completion of GUI based adding of recipes.
-	 * @return List of collected ingredients.
-	 */
-	public List<Ingredient> collectIngredients() {
-		return cookBookDao.collectIngredients();
 	}
 	
 	/**
@@ -93,8 +85,21 @@ public class Controller {
 		return cookBookDao.findCategoryByName(name);
 	}
 	
+	/**
+	 * Database call to find all recipes that belong to a given category.
+	 * @param C The category to look for
+	 * @return List of recipes in given category.
+	 */
 	public List<Recipe> getRecipesByCategory(Category C) {
 		return cookBookDao.getRecipesByCategory(C);
+	}
+	
+	public Recipe getSelected() {
+		return selected;
+	}
+
+	public void setSelected(Recipe selected) {
+		this.selected = selected;
 	}
 	
 }

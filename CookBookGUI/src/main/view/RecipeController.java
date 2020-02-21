@@ -19,7 +19,11 @@ import main.controller.Controller;
 import main.model.Category;
 import main.model.Ingredient;
 import main.model.Recipe;
-
+/**
+ * Controller for popup that handles creation and editing of Recipe values. 
+ * @author tmati
+ *
+ */
 public class RecipeController implements Initializable {
 
     @FXML
@@ -106,6 +110,10 @@ public class RecipeController implements Initializable {
     	ingredientsTable.getItems().add(new Ingredient());
     }
     
+    /**
+     * Action to save the created recipe to DB after all fields are successfully filled.
+     * @param event
+     */
     @FXML
     void saveRecipe(MouseEvent event) {
     	//Check for empty fields
@@ -129,19 +137,30 @@ public class RecipeController implements Initializable {
 	errorLabel.setText("Please fill out all fields and try again!");
     }
     
+    /**
+     * Edit commit method for editing amount value in ingredients table.
+     * @param event The CellEditEvent that fires on exiting the edited cell.
+     */
     @FXML
     void amountOnEditCommit(TableColumn.CellEditEvent<Ingredient, Double> event) {
     	Ingredient toEdit = ingredientsTable.getSelectionModel().getSelectedItem();
     	toEdit.setAmount(event.getNewValue());
     }
     
-
+    /**
+     * Edit commit method for editing unit of measurement for ingredient.
+     * @param event The CellEditEvent that fires on exiting the edited cell.
+     */
     @FXML
     void measureOnEditCommit(TableColumn.CellEditEvent<Ingredient, String> event) {
     	Ingredient toEdit = ingredientsTable.getSelectionModel().getSelectedItem();
     	toEdit.setMeasure(event.getNewValue());
     }
     
+    /**
+     * Edit commit method for editing name of ingredient.
+     * @param event The CellEditEvent that fires on exiting the edited cell.
+     */
     @FXML
     void nameOnEditCommit(TableColumn.CellEditEvent<Ingredient, String> event) {
     	Ingredient toEdit = ingredientsTable.getSelectionModel().getSelectedItem();

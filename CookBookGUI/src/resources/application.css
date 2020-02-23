@@ -1,1 +1,14 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#ingredientsTable .scroll-bar:horizontal .increment-button, #ingredientsTable .scroll-bar:horizontal .decrement-button {
+	-fx-background-color: null;
+	-fx-background-radius:0;
+	-fx-background-insets:0;
+	-fx-padding:0;
+}
+
+#ingredientsTable .scroll-bar:horizontal .increment-arrow, .scroll-bar:horizontal .decrement-arrow {
+	-fx-background-color: null;
+	-fx-background-radius:0;
+	-fx-background-insets:0;
+	-fx-padding:0;
+	-fx-shape: null;
+}

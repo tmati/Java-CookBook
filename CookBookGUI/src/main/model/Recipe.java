@@ -123,5 +123,9 @@ public class Recipe {
 	public void setAmount(String amount) {
 		this.amount = amount;
 	}
+
+	public int getRecipeId() {
+		return recipeId;
+	}
 	
 }

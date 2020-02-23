@@ -56,16 +56,40 @@ public class Controller {
 	 * Calls Dao to add a new recipe entry into the DB recipes table.
 	 * @param r the recipe to add.
 	 */
-	public void SaveRecipe(Recipe r) {
-		cookBookDao.SaveRecipe(r);
+	public void saveRecipe(Recipe r) {
+		cookBookDao.saveRecipe(r);
 	}
 	
 	/**
-	 * Calls Dao to create new category entry to db
+	 * Calls Dao to update existing Recipe object.
+	 * @param r Recipe object to update.
+	 */
+	public void updateRecipe(Recipe r) {
+		cookBookDao.updateRecipe(r);
+	}
+	
+	/**
+	 * Calls Dao to create new category entry to DB.
 	 * @param toSave
 	 */
-	public void SaveCategory(Category toSave) {
+	public void saveCategory(Category toSave) {
 	  cookBookDao.saveCategory(toSave);
+	}
+	
+	/**
+	 * Calls Dao to delete Recipe object from DB.
+	 * @param r
+	 */
+	public void deleteRecipe(Recipe r) {
+		cookBookDao.deleteRecipe(r);
+	}
+	
+	/**
+	 * Calls Dao to delete Category object from DB.
+	 * @param c
+	 */
+	public void deleteCategory(Category c) {
+		cookBookDao.deleteCategory(c);
 	}
 	
 	/**
@@ -94,10 +118,18 @@ public class Controller {
 		return cookBookDao.getRecipesByCategory(C);
 	}
 	
+	/**
+	 * Returns the Recipe object stored by class
+	 * @return the Recipe object stored by this Controller instance.
+	 */
 	public Recipe getSelected() {
 		return selected;
 	}
-
+	
+	/**
+	 * Set the Recipe object stored by this instance.
+	 * @param selected the Recipe object to store in this Controller instance.
+	 */
 	public void setSelected(Recipe selected) {
 		this.selected = selected;
 	}

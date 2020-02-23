@@ -1,14 +1,11 @@
 package main.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 /**
  * The Database Access Object for this project. Handles use of DB. Passes data to Controller class methods.
  * @author tmati
@@ -46,16 +43,52 @@ public class Dao {
 	}
 	
 	/**
+	 * Updates existing Recipe object in DB.
+	 * @param toUpdate the Recipe object to update.
+	 */
+	public void updateRecipe(Recipe toUpdate) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(toUpdate);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	/**
 	 * Saves a new Recipe object to DB.
 	 * @param newRecipe The Recipe object to persist.
 	 */
-	public void SaveRecipe(Recipe newRecipe) {
+	public void saveRecipe(Recipe newRecipe) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(newRecipe);
 		
 		em.getTransaction().commit();
 		em.close();
+	}
+	
+	/**
+	 * Deletes given Recipe object from the database.
+	 * @param r the Recipe to delete.
+	 */
+	public void deleteRecipe(Recipe r) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Recipe toDelete = em.find(Recipe.class, r.getRecipeId());
+		em.remove(toDelete);
+		em.getTransaction().commit();
+	}
+	
+	/**
+	 * Deletes given Category object from database.
+	 * @param c The category to delete.
+	 */
+	public void deleteCategory(Category c) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Category toDelete = em.find(Category.class, c.getCategoryID());
+		em.remove(toDelete);
+		em.getTransaction().commit();
 	}
 	
 	/**

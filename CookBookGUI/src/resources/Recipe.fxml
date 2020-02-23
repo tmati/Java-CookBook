@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import java.net.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="480.0" style="-fx-background-color: goldenrod; -fx-border-color: black;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.RecipeController">
    <children>
@@ -16,7 +17,7 @@
       <TextField fx:id="amountField" layoutX="288.0" layoutY="69.0" prefHeight="33.0" prefWidth="154.0" promptText="Amount produced" />
       <TextField fx:id="categoryField" layoutX="43.0" layoutY="127.0" prefHeight="33.0" prefWidth="401.0" promptText="Recipe category" />
       <TextArea fx:id="processTextArea" layoutX="44.0" layoutY="441.0" prefHeight="130.0" prefWidth="401.0" promptText="Write detailed recipe here" wrapText="true" />
-      <TableView fx:id="ingredientsTable" editable="true" layoutX="43.0" layoutY="206.0" prefHeight="200.0" prefWidth="401.0">
+      <TableView id="ingredientsTable" fx:id="ingredientsTable" editable="true" layoutX="43.0" layoutY="206.0" prefHeight="200.0" prefWidth="401.0">
         <columns>
           <TableColumn fx:id="amountColumn" onEditCommit="#amountOnEditCommit" prefWidth="75.0" text="AMOUNT" />
           <TableColumn fx:id="measureColumn" onEditCommit="#measureOnEditCommit" prefWidth="120.0" text="MEASURE" />
@@ -24,12 +25,16 @@
         </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="140.0" layoutY="166.0" prefHeight="33.0" prefWidth="200.0" text="INGREDIENTS" />
-      <Button fx:id="addIngredientBtn" layoutX="404.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#addIngredient" text="Add" />
+      <Button fx:id="addIngredientBtn" layoutX="360.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#addIngredient" text="Add" />
       <Label fx:id="errorLabel" alignment="CENTER" layoutX="144.0" layoutY="580.0" prefHeight="33.0" prefWidth="200.0" />
       <Button fx:id="saveBtn" layoutX="223.0" layoutY="627.0" mnemonicParsing="false" onMouseClicked="#saveRecipe" text="SAVE" />
       <Label fx:id="nameLabel" layoutX="43.0" layoutY="45.0" prefHeight="25.0" prefWidth="68.0" text="NAME" />
       <Label fx:id="quantityLabel" ellipsisString="" layoutX="288.0" layoutY="45.0" prefHeight="25.0" prefWidth="127.0" text="QUANTITY" textOverrun="CLIP" />
       <Label fx:id="categoryLabel" ellipsisString="" layoutX="43.0" layoutY="103.0" prefHeight="25.0" prefWidth="154.0" text="CATEGORY" textOverrun="CLIP" />
       <Label alignment="CENTER" layoutX="145.0" layoutY="408.0" prefHeight="33.0" prefWidth="200.0" text="PROCESS" />
+      <Button fx:id="delIngredientBtn" layoutX="406.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#delIngredient" text="DEL" />
    </children>
+   <stylesheets>
+   <URL value= "@application.css" />
+   </stylesheets>
 </Pane>

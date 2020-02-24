@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
-<?import java.net.*?>
 
-<Pane fx:id="bgPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: goldenrod;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.GuiController">
+<Pane fx:id="bgPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.GuiController">
    <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" preserveRatio="true">
+         <image>
+            <Image url="@img/paperbg.png" />
+         </image>
+      </ImageView>
       <ScrollPane fx:id="descriptionScroll" layoutX="48.0" layoutY="358.0" style="-fx-background-color: transparent;">
          <content>
             <TextFlow fx:id="recipeDescription" prefHeight="312.0" prefWidth="674.0" textAlignment="JUSTIFY" />
@@ -19,23 +27,22 @@
       </ScrollPane>
       <ScrollPane fx:id="ingredientsScroll" layoutX="48.0" layoutY="131.0" prefHeight="214.0" prefWidth="676.0" style="-fx-background-color: transparent;">
          <content>
-            <TextFlow fx:id="ingredientsList" focusTraversable="true" prefHeight="210.0" prefWidth="667.0" />
+            <TextFlow fx:id="ingredientsList" focusTraversable="true" prefHeight="210.0" prefWidth="667.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
          </content>
       </ScrollPane>
       <ScrollPane fx:id="recipeListScroll" layoutX="768.0" layoutY="129.0" prefHeight="543.0" prefWidth="456.0" style="-fx-background-color: transparent;">
          <content>
-            <ListView fx:id="recipeList" prefHeight="608.0" prefWidth="454.0" />
+            <ListView fx:id="recipeList" prefHeight="519.0" prefWidth="454.0" />
          </content>
       </ScrollPane>
       <Label fx:id="nameLabel" layoutX="48.0" layoutY="29.0" prefHeight="33.0" prefWidth="276.0" text="Label" textOverrun="CLIP" />
       <Label fx:id="amountLabel" layoutX="48.0" layoutY="76.0" prefHeight="33.0" prefWidth="159.0" text="Label" />
-      <Label fx:id="titleLabel" alignment="CENTER" layoutX="494.0" layoutY="29.0" prefHeight="33.0" prefWidth="134.0" text="JAVA COOKBOOK" />
+      <Label fx:id="titleLabel" alignment="CENTER" layoutX="453.0" layoutY="29.0" prefHeight="33.0" prefWidth="270.0" text="JAVA COOKBOOK"></Label>
       <Button fx:id="createButton" layoutX="1169.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#newRecipePopup" prefHeight="25.0" prefWidth="53.0" text="NEW" />
-      <ChoiceBox fx:id="categoryChoice" layoutX="996.0" layoutY="80.0" onAction="#sortByCategory" prefWidth="150.0" value="Sort by category" />
+      <ChoiceBox fx:id="categoryChoice" layoutX="996.0" layoutY="80.0" onAction="#sortByCategory" prefWidth="150.0" />
       <TextField fx:id="searchField" layoutX="768.0" layoutY="80.0" prefHeight="25.0" prefWidth="205.0" />
-      <Label fx:id="categoryLabel" alignment="CENTER" layoutX="1004.0" layoutY="46.0" prefHeight="33.0" prefWidth="134.0" text="Category" />
    </children>
       <stylesheets>
-   <URL value= "@application.css" />
+   <URL value="@application.css" />
    </stylesheets>
 </Pane>

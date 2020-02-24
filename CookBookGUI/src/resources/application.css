@@ -1,3 +1,21 @@
+@font-face {
+	font-family: Neuton;
+	src: url("Neuton-Regular.ttf");
+}
+
+@font-face {
+	font-family: Neuton2;
+	src: url("Neuton-bold.ttf");
+}
+
+
+#bgPane {
+	-fx-text-fill: yellowgreen;
+	-fx-font-family: Neuton;
+}
+
+
+
 #ingredientsTable .scroll-bar:horizontal .increment-button, #ingredientsTable .scroll-bar:horizontal .decrement-button {
 	-fx-background-color: null;
 	-fx-background-radius:0;
@@ -11,4 +29,30 @@
 	-fx-background-insets:0;
 	-fx-padding:0;
 	-fx-shape: null;
+}
+
+.list-cell {
+	-fx-background-color:transparent;
+}
+.list-view{
+	-fx-background-color:transparent;
+}
+
+.list-cell:filled:selected {
+	-fx-text-fill: red;
+}
+.scroll-pane {
+	-fx-background-color:transparent;
+}
+
+.scroll-pane > .viewport {
+	-fx-background-color:transparent;
+}
+
+.label {
+	-fx-text-fill: red;
+}
+
+.text {
+	-fx-text-fill:red;
 }

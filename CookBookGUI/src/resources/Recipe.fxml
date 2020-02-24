@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
-<?import java.net.*?>
+<?import java.net.URL?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="480.0" style="-fx-background-color: goldenrod; -fx-border-color: black;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.RecipeController">
    <children>
@@ -35,6 +35,6 @@
       <Button fx:id="delIngredientBtn" layoutX="406.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#delIngredient" text="DEL" />
    </children>
    <stylesheets>
-   <URL value= "@application.css" />
+   <URL value="@appication.css" />
    </stylesheets>
 </Pane>

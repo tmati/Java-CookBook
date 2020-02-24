@@ -34,6 +34,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -119,6 +120,7 @@ public class GuiController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		ingredientsList.setBackground(Background.EMPTY);
 		//createButton.setGraphic(new ImageView(url));
 		categoryChoice.setConverter(new StringConverter<Category>() {
 
@@ -133,8 +135,12 @@ public class GuiController implements Initializable {
 			}
 			
 		});
+		
+		Category all = new Category ("All categories");
+		categoryChoice.getItems().add(0, all);
 		categoryChoice.getItems().addAll(controllerInstance.getCategories());
-		categoryChoice.getItems().add(0, new Category("All categories"));
+		categoryChoice.getSelectionModel().selectFirst();
+
 		
 		//hide horizontal scroll bars.
 		ingredientsScroll.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
@@ -164,11 +170,6 @@ public class GuiController implements Initializable {
 		amountLabel.setText("");
 		titleLabel.setText("");
 		
-		//Get all recipes.
-		List <Recipe> Recipes = controllerInstance.getRecipes();
-		
-		//Populate recipe list with db recipes.
-		generateRecipeList(Recipes);
 	}
 	
 	/**
@@ -215,6 +216,8 @@ public class GuiController implements Initializable {
 					searchField.setText("");
 					obsRecipes.clear();
 					generateRecipeList(controllerInstance.getRecipes());
+					categoryChoice.getItems().clear();
+					categoryChoice.getItems().addAll(Controller.getInstance().getCategories());
 					//TODO clear empty categories here
 				}
 				
@@ -314,15 +317,18 @@ public class GuiController implements Initializable {
 	 */
 	@FXML
 	public void sortByCategory(ActionEvent event) {
-		obsRecipes.clear();
 		if(!categoryChoice.getSelectionModel().getSelectedItem().getCategoryDescription().equals("All categories")) {
 		Category selected = categoryChoice.getSelectionModel().getSelectedItem();
+		int index = categoryChoice.getSelectionModel().getSelectedIndex();
+		obsRecipes.clear();
 		List <Recipe>filteredRecipes = controllerInstance.getRecipesByCategory(selected);
+		//Populate recipe list
 		generateRecipeList(filteredRecipes);
 		categoryChoice.getItems().clear();
 		categoryChoice.getItems().addAll(Controller.getInstance().getCategories());
 		//Set new choiceBox option to reset filter.
 		categoryChoice.getItems().add(0, new Category("All categories"));
+		categoryChoice.getSelectionModel().select(index);
 		} else {
 			generateRecipeList(controllerInstance.getRecipes());
 		}
